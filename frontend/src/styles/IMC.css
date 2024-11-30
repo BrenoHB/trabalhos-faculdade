@@ -1,0 +1,46 @@
+.imc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.imc-title {
+  font-size: 24px;
+  color: #002b5c;
+  margin-bottom: 20px;
+}
+
+.imc-input {
+  margin: 10px 0;
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.imc-button {
+  margin-top: 20px;
+  padding: 10px;
+  width: 300px;
+  background-color: #002b5c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+.imc-button:hover {
+  background-color: #004080;
+}
+
+.imc-result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #002b5c;
+}

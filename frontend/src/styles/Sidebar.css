@@ -1,0 +1,23 @@
+.sidebar-container {
+    width: 250px;
+    background-color: #002b5c;
+    color: #ffffff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .nav-item {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+  
