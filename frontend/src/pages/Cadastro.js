@@ -11,7 +11,7 @@ const Cadastro = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await api.post('/cadastro', data);
+      const response = await api.post('/register', data);
       if (response.data.success) {
         alert('Cadastro realizado com sucesso!');
         navigate('/login'); // Após o cadastro, redireciona para o login
@@ -34,6 +34,28 @@ const Cadastro = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
+        {/* Campo de username */}
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Nome de Usuário"
+            {...register('username', { required: 'Nome de usuário é obrigatório' })}
+            className={`input ${errors.username ? 'input-error' : ''}`}
+          />
+          {errors.username && <p className="error-text">{errors.username.message}</p>}
+        </div>
+
+        {/* Campo de senha */}
+        <div className="form-group">
+          <input
+            type="password"
+            placeholder="Senha"
+            {...register('password', { required: 'Senha é obrigatória' })}
+            className={`input ${errors.password ? 'input-error' : ''}`}
+          />
+          {errors.password && <p className="error-text">{errors.password.message}</p>}
+        </div>
+
         {/* Campo de CPF com máscara */}
         <div className="form-group">
           <InputMask
@@ -51,28 +73,6 @@ const Cadastro = () => {
             )}
           </InputMask>
           {errors.cpf && <p className="error-text">{errors.cpf.message}</p>}
-        </div>
-
-        {/* Campo de senha */}
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Senha"
-            {...register('senha', { required: 'Senha é obrigatória' })}
-            className={`input ${errors.senha ? 'input-error' : ''}`}
-          />
-          {errors.senha && <p className="error-text">{errors.senha.message}</p>}
-        </div>
-
-        {/* Campo de Data de Nascimento */}
-        <div className="form-group">
-          <input
-            type="date"
-            placeholder="Data de Nascimento"
-            {...register('dataNasci', { required: 'Data de Nascimento é obrigatória' })}
-            className={`input ${errors.dataNasci ? 'input-error' : ''}`}
-          />
-          {errors.dataNasci && <p className="error-text">{errors.dataNasci.message}</p>}
         </div>
 
         {/* Botões */}
