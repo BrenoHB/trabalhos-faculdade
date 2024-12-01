@@ -15,7 +15,6 @@ const Login = () => {
   // Função para o login
   const handleLogin = async () => {
     try {
-      // Envia os dados de login para o backend
       const response = await axios.post('http://localhost:5136/login', {
         cpf,
         password
@@ -28,7 +27,7 @@ const Login = () => {
       }
       console.log(cpf, password);
     } catch (error) {
-      alert('Erro no login, verifique seus dados');
+      alert('Erro no login, verifique seus dados ' + error);
     }
   };
 

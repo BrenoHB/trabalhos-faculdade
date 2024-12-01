@@ -18,6 +18,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
 
+
           {/* Rotas protegidas */}
           <Route element={<PrivateRoute />}>
             <Route path="/home" element={<Home />} />

@@ -12,7 +12,7 @@ const Cadastro = () => {
   const onSubmit = async (data) => {
     try {
       const response = await api.post('/register', data);
-      if (response.data.success) {
+      if (response.status === 200) {
         alert('Cadastro realizado com sucesso!');
         navigate('/login'); // Após o cadastro, redireciona para o login
       } else {

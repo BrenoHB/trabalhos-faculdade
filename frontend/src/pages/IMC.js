@@ -18,7 +18,7 @@ const IMC = () => {
 
       // Salvar no banco
       try {
-        await api.post('/imc', {
+        await api.post('/postimc', {
           imc: parseFloat(imcCalculado),
           altura: parseFloat(altura),
           peso: parseFloat(peso),
@@ -36,7 +36,7 @@ const IMC = () => {
   // Função para exibir o histórico de IMC
   const handleHistorico = async () => {
     try {
-      const response = await api.get('/imc', {
+      const response = await api.post('/getimc', {
         params: { usuario },
       });
       setHistorico(response.data);  // Atualiza o estado com o histórico de IMC
@@ -48,7 +48,7 @@ const IMC = () => {
   return (
     <div className="imc-container">
       <h1 className="imc-title">Calcular IMC</h1>
-      
+
       <input
         className="imc-input"
         type="number"
@@ -73,7 +73,7 @@ const IMC = () => {
       <button className="imc-button" onClick={calcularIMC}>
         Calcular IMC
       </button>
-      
+
       {imc && <div className="imc-result">Seu IMC é: {imc}</div>}
 
       {/* Botão para exibir o histórico de IMC */}
@@ -82,13 +82,7 @@ const IMC = () => {
       </button>
 
       {/* Exibindo o histórico de IMC */}
-      {historico.length > 0 && (
-        <div className="historico-container">
-          <h2>Histórico de IMC</h2>
-          <ul>
-            {historico.map((registro, index) => (
-              <li key={index}>
-                <p><strong>IMC:</strong> {registro.imc}</p>
+      {historico.length > 0 && (<div className="historico-container"><h2>Histórico de IMC</h2><ul>{historico.map((registro, index) => (<li key={index}><p><strong>IMC:</strong> {registro.imc}</p>
                 <p><strong>Peso:</strong> {registro.peso} kg</p>
                 <p><strong>Altura:</strong> {registro.altura} cm</p>
                 <p><strong>Data de Cálculo:</strong> {new Date(registro.createdAt).toLocaleString()}</p>
