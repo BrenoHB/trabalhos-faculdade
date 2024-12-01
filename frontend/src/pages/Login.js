@@ -1,7 +1,7 @@
-// Login.js
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import InputMask from 'react-input-mask'; // Importando a biblioteca para aplicar a máscara
+import InputMask from 'react-input-mask';
 import { useAuth } from '../contexts/AuthContext'; // Para acessar o contexto de autenticação
 import '../styles/Login.css'; // Adicione o caminho para o seu arquivo CSS
 import axios from 'axios';
@@ -9,16 +9,16 @@ import axios from 'axios';
 const Login = () => {
   const { login } = useAuth();
   const [cpf, setCpf] = useState('');
-  const [senha, setSenha] = useState('');
+  const [password, setpassword] = useState('');
   const navigate = useNavigate();
 
   // Função para o login
   const handleLogin = async () => {
     try {
       // Envia os dados de login para o backend
-      const response = await axios.post('http://localhost:5000/auth/login', {
+      const response = await axios.post('http://localhost:5136/login', {
         cpf,
-        senha
+        password
       });
 
       if (response.data.token) {
@@ -26,6 +26,7 @@ const Login = () => {
         login(); // Atualiza o contexto de autenticação
         navigate('/home'); // Redireciona para a página inicial
       }
+      console.log(cpf, password);
     } catch (error) {
       alert('Erro no login, verifique seus dados');
     }
@@ -54,13 +55,13 @@ const Login = () => {
           </InputMask>
         </div>
 
-        {/* Campo de Senha */}
+        {/* Campo de password */}
         <div className="form-group">
           <input
             type="password"
-            placeholder="Senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
+            placeholder="password"
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
             className="input"
           />
         </div>

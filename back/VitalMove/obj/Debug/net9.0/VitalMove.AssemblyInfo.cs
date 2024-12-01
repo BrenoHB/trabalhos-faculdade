@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VitalMove")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+719fdb98ff3a52d6ba1ce0f07212d45b370ea04f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f37bed9e00c0b32e4895d38e61fe1952a025ae3")]
 [assembly: System.Reflection.AssemblyProductAttribute("VitalMove")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VitalMove")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
