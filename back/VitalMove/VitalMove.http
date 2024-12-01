@@ -1,4 +1,4 @@
-@VitalMove_HostAddress = http://localhost:5136
+@VitalMove_HostAddress = http://localhost:5000
 
 GET {{VitalMove_HostAddress}}/weatherforecast/
 Accept: application/json

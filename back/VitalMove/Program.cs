@@ -24,14 +24,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configuração dos middlewares
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
-app.UseHttpsRedirection();
+
 app.UseCors("AllowSpecificOrigins");
 
 // Rotas
