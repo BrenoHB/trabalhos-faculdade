@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dKFVBPBCv24=",
+  "dgSpecHash": "fbzDNhXEM8M=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Breno\\Documents\\GitHub\\trabalhos-faculdade\\back\\VitalMove\\VitalMove.csproj",
+  "projectFilePath": "C:\\Users\\Breno\\Documents\\GitHub\\VitalMove\\back\\VitalMove\\VitalMove.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Breno\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Breno\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -73,7 +73,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 8.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
+      "message": "O pacote 'System.Text.Json' 8.0.4 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
       "libraryId": "System.Text.Json",
       "targetGraphs": [
         "net9.0"

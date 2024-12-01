@@ -3349,11 +3349,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Breno\\Documents\\GitHub\\trabalhos-faculdade\\back\\VitalMove\\VitalMove.csproj",
+      "projectUniqueName": "C:\\Users\\Breno\\Documents\\GitHub\\VitalMove\\back\\VitalMove\\VitalMove.csproj",
       "projectName": "VitalMove",
-      "projectPath": "C:\\Users\\Breno\\Documents\\GitHub\\trabalhos-faculdade\\back\\VitalMove\\VitalMove.csproj",
+      "projectPath": "C:\\Users\\Breno\\Documents\\GitHub\\VitalMove\\back\\VitalMove\\VitalMove.csproj",
       "packagesPath": "C:\\Users\\Breno\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Breno\\Documents\\GitHub\\trabalhos-faculdade\\back\\VitalMove\\obj\\",
+      "outputPath": "C:\\Users\\Breno\\Documents\\GitHub\\VitalMove\\back\\VitalMove\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Breno\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3435,7 +3435,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 8.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
+      "message": "O pacote 'System.Text.Json' 8.0.4 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
       "libraryId": "System.Text.Json",
       "targetGraphs": [
         "net9.0"

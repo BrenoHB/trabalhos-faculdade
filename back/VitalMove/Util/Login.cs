@@ -10,14 +10,14 @@ namespace Util.Login
         public static bool Authenticate(UserLoginDTO credential)
         {
             string conn = DbString.Context();
-            string query = "SELECT usuario, senha FROM usuarios WHERE usuario = @username AND senha = @password";
+            string query = "SELECT CPF, senha FROM usuarios WHERE CPF = @CPF AND senha = @password";
 
             using (var connection = new MySqlConnection(conn))
             {
                 using (var command = new MySqlCommand(query, connection))
                 {
 
-                    command.Parameters.AddWithValue("@username", credential.CPF);
+                    command.Parameters.AddWithValue("@CPF", credential.CPF);
                     command.Parameters.AddWithValue("@password", credential.Password);
 
                     connection.Open();

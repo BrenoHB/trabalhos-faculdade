@@ -7,149 +7,109 @@ using Services.Alimentacao;
 using Services.AtFisica;
 using Services.IMC;
 
-
 var builder = WebApplication.CreateBuilder(args);
+
+// Configuração dos serviços
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigins", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // Endereço do front-end
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
+// Configuração dos middlewares
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-
 app.UseHttpsRedirection();
+app.UseCors("AllowSpecificOrigins");
 
+// Rotas
 app.MapPost("/login", (UserLoginDTO credentials) =>
 {
     bool isValid = Login.Authenticate(credentials);
-    if (isValid)
-    {
-        return Results.Ok("Login successful");
+    if(isValid){
+       LoginResponseDTO LoginResponse = new  LoginResponseDTO();
+       LoginResponse.Token = "1";
+       return Results.Ok(LoginResponse);
+
     }
-    else
-    {
-        return Results.BadRequest("Invalid username or password");
-    }
-})
-.WithName("Login");
+
+    return Results.BadRequest("Invalid username or password");
+
+}).WithName("Login");
 
 app.MapPost("/register", (UserRegisterDTO credentials) =>
 {
     bool isValid = Login.Register(credentials);
-    if (isValid)
-    {
-        return Results.Ok("usuario foi registrado com suscesso!");
-    }
-    else
-    {
-        return Results.BadRequest("Usuario ja existente");
-    }
-})
-.WithName("register");
+    return isValid ? Results.Ok("Usuário registrado com sucesso!") : Results.BadRequest("Usuário já existente");
+}).WithName("Register");
 
-
-app.MapPost("/PostAlimentacao", (AlimentacaoResponseDTO AlimentacaoResponseDTO) =>
+app.MapPost("/PostAlimentacao", (AlimentacaoResponseDTO dto) =>
 {
-    bool isValid = Alimentacao.PostAlimentacao(AlimentacaoResponseDTO);
-    if (isValid)
-    {
-        return Results.Ok("Refeição não registrada com sucesso");
-    }
-    else
-    {
-        return Results.BadRequest("Refeição registrada com sucesso");
-    }
-})
-.WithName("PostAlimentacao");
+    bool isValid = Alimentacao.PostAlimentacao(dto);
+    return isValid ? Results.Ok("Refeição registrada com sucesso") : Results.BadRequest("Erro ao registrar refeição");
+}).WithName("PostAlimentacao");
 
-app.MapPost("/GetAlimentacao", (AlimentacaoRequestDTO AlimentacaoRequestDTO) =>
+app.MapPost("/GetAlimentacao", (AlimentacaoRequestDTO dto) =>
 {
     try
     {
-        List<AlimentacaoResponseDTO> listAlimentacaoResponseDTO = Alimentacao.GetAlimentacao(AlimentacaoRequestDTO);
-        return Results.Ok(listAlimentacaoResponseDTO);
+        var response = Alimentacao.GetAlimentacao(dto);
+        return Results.Ok(response);
     }
     catch (Exception ex)
     {
         return Results.BadRequest(ex.Message);
     }
+}).WithName("GetAlimentacao");
 
-
-
-
-})
-.WithName("GetAlimentacao");
-
-app.MapPost("/PostAtFisica", (AtFisicaResponseDTO AtFisicaResponseDTO) =>
+app.MapPost("/PostAtFisica", (AtFisicaResponseDTO dto) =>
 {
-    bool isValid = AtFisica.PostAtFisica(AtFisicaResponseDTO);
-    if (isValid)
-    {
-        return Results.Ok("Atividade registrada com sucesso");
-    }
-    else
-    {
-        return Results.BadRequest("Atividade não registrada com sucesso");
-    }
-})
-.WithName("PostAtFisica");
+    bool isValid = AtFisica.PostAtFisica(dto);
+    return isValid ? Results.Ok("Atividade física registrada com sucesso") : Results.BadRequest("Erro ao registrar atividade física");
+}).WithName("PostAtFisica");
 
-app.MapPost("/GetAtFisica", (AtFisicaRequestDTO AtFisicaRequestDTO) =>
+app.MapPost("/GetAtFisica", (AtFisicaRequestDTO dto) =>
 {
     try
     {
-        List<AtFisicaResponseDTO> listAtFisicaResponseDTO = AtFisica.GetAtFisica(AtFisicaRequestDTO);
-        return Results.Ok(listAtFisicaResponseDTO);
+        var response = AtFisica.GetAtFisica(dto);
+        return Results.Ok(response);
     }
     catch (Exception ex)
     {
         return Results.BadRequest(ex.Message);
     }
+}).WithName("GetAtFisica");
 
-
-
-
-})
-.WithName("GetAtFisica");
-
-
-
-
-app.MapPost("/PostIMC", (IMCResponseDTO IMCResponseDTO) =>
+app.MapPost("/PostIMC", (IMCResponseDTO dto) =>
 {
-    bool isValid = IMC.PostIMC(IMCResponseDTO);
-    if (isValid)
-    {
-        return Results.Ok("Atividade registrada com sucesso");
-    }
-    else
-    {
-        return Results.BadRequest("Atividade não registrada com sucesso");
-    }
-})
-.WithName("PostIMC");
+    bool isValid = IMC.PostIMC(dto);
+    return isValid ? Results.Ok("IMC registrado com sucesso") : Results.BadRequest("Erro ao registrar IMC");
+}).WithName("PostIMC");
 
-app.MapPost("/GetIMC", (IMCRequestDTO IMCRequestDTO) =>
+app.MapPost("/GetIMC", (IMCRequestDTO dto) =>
 {
     try
     {
-        List<IMCResponseDTO> listIMCResponseDTO = IMC.GetIMC(IMCRequestDTO);
-        return Results.Ok(listIMCResponseDTO);
+        var response = IMC.GetIMC(dto);
+        return Results.Ok(response);
     }
     catch (Exception ex)
     {
         return Results.BadRequest(ex.Message);
     }
-
-
-
-
-})
-.WithName("GetIMC");
-
+}).WithName("GetIMC");
 
 app.Run();
-
