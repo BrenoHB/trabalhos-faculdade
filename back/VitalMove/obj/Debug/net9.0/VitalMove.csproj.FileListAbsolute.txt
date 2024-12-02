@@ -273,3 +273,4 @@ C:\Users\Breno\Documents\GitHub\trabalhos-faculdade\back\VitalMove\obj\Debug\net
 C:\Users\Breno\Documents\GitHub\trabalhos-faculdade\back\VitalMove\obj\Debug\net9.0\VitalMove.pdb
 C:\Users\Breno\Documents\GitHub\trabalhos-faculdade\back\VitalMove\obj\Debug\net9.0\VitalMove.genruntimeconfig.cache
 C:\Users\Breno\Documents\GitHub\trabalhos-faculdade\back\VitalMove\obj\Debug\net9.0\ref\VitalMove.dll
+C:\Users\Breno\Documents\GitHub\trabalhos-faculdade\back\VitalMove\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

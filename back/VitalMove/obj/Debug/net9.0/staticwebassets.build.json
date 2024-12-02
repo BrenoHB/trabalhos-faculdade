@@ -2,7 +2,7 @@
   "Version": 1,
   "Hash": "AlMWVnNTsomF2okW4IgDa6EYhimOdbGOeyQ6t0G1ulg=",
   "Source": "VitalMove",
-  "BasePath": "_content/VitalMove",
+  "BasePath": "_content/",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
