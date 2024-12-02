@@ -5,7 +5,7 @@ import '../styles/Alimentacao.css';
 const Alimentacao = () => {
   const [horario, setHorario] = useState('');
   const [alimentos, setAlimentos] = useState('');
-  const [kcal, setKcal] = useState(0);
+  const [kcal, setKcal] = useState();
   const [comentarios, setComentarios] = useState('');
   const [usuario, setUsuario] = useState('');  // Campo para o nome do usuário
   const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico de alimentação
@@ -13,7 +13,8 @@ const Alimentacao = () => {
   // Função para salvar o registro de alimentação
   const handleSubmit = async () => {
     try {
-      await api.post('/alimentacao', {
+      // Envia os dados no corpo da requisição
+      await api.post('/PostAlimentacao', {
         horario,
         alimentos,
         kcal: parseInt(kcal),
@@ -33,8 +34,9 @@ const Alimentacao = () => {
   // Função para exibir o histórico de alimentação
   const handleHistorico = async () => {
     try {
-      const response = await api.get('/alimentacao', {
-        params: { usuario },
+      // Envia o usuário no corpo da requisição
+      const response = await api.post('/GetAlimentacao', {
+        usuario,
       });
       setHistorico(response.data);  // Atualiza o estado com o histórico de alimentação
     } catch (error) {

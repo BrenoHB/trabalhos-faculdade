@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import api from '../services/api';
-import '../styles/AtFisica.css';
+import '../styles/AtFisica.css'; // Importação do estilo externo
 
 const AtFisica = () => {
   const [modalidade, setModalidade] = useState('');
-  const [tempo, setTempo] = useState(0);
-  const [distancia, setDistancia] = useState(0);
-  const [kcal, setKcal] = useState(0);
-  const [tempoD, setTempoD] = useState(0);
-  const [usuario, setUsuario] = useState('');  // Campo para o usuário
-  const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico
+  const [tempo, setTempo] = useState();
+  const [distancia, setDistancia] = useState();
+  const [kcal, setKcal] = useState();
+  const [tempoD, setTempoD] = useState();
+  const [usuario, setUsuario] = useState('');  // Campo para o nome do usuário
+  const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico de atividades
 
   // Função para registrar a atividade física
   const handleSubmit = async () => {
     try {
-      await api.post('/atfisica', {
+      await api.post('/PostAtFisica', {
         modalidade,
         tempo,
         distancia,
@@ -37,10 +37,8 @@ const AtFisica = () => {
   // Função para exibir o histórico de atividades físicas
   const handleHistorico = async () => {
     try {
-      const response = await api.get('/atfisica', {
-        params: {
-          usuario,
-        },
+      const response = await api.post('/GetAtFisica', {
+        usuario,
       });
       setHistorico(response.data);  // Atualiza o estado com os dados do histórico
     } catch (error) {
@@ -51,46 +49,53 @@ const AtFisica = () => {
   return (
     <div className="atfisica-container">
       <h1 className="atfisica-title">Registro de Atividade Física</h1>
+
       <input
+        className="atfisica-input"
         type="text"
         placeholder="Modalidade"
         value={modalidade}
         onChange={(e) => setModalidade(e.target.value)}
       />
       <input
+        className="atfisica-input"
         type="number"
         placeholder="Tempo (minutos)"
         value={tempo}
         onChange={(e) => setTempo(parseInt(e.target.value))}
       />
       <input
+        className="atfisica-input"
         type="number"
         placeholder="Distância (metros)"
         value={distancia}
         onChange={(e) => setDistancia(parseInt(e.target.value))}
       />
       <input
+        className="atfisica-input"
         type="number"
         placeholder="Calorias Queimadas (Kcal)"
         value={kcal}
         onChange={(e) => setKcal(parseInt(e.target.value))}
       />
       <input
+        className="atfisica-input"
         type="number"
         placeholder="Tempo de Descanso (minutos)"
         value={tempoD}
         onChange={(e) => setTempoD(parseInt(e.target.value))}
       />
       <input
+        className="atfisica-input"
         type="text"
         placeholder="Usuário"
         value={usuario}
         onChange={(e) => setUsuario(e.target.value)}
       />
-      <button onClick={handleSubmit}>Salvar</button>
+      <button className="atfisica-button" onClick={handleSubmit}>Salvar</button>
 
       {/* Botão para exibir o histórico */}
-      <button onClick={handleHistorico}>Exibir Histórico</button>
+      <button className="atfisica-button" onClick={handleHistorico}>Exibir Histórico</button>
 
       {/* Exibindo o histórico de atividades */}
       {historico.length > 0 && (

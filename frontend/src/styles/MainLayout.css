@@ -1,0 +1,18 @@
+.main-layout {
+  display: flex;
+  height: 100vh; /* Ocupa toda a altura da janela */
+  font-family: 'Poppins', sans-serif;
+}
+
+.sidebar-wrapper {
+  width: 250px; /* Largura fixa para a Sidebar */
+  background-color: #f4f4f4; /* Fundo claro para a Sidebar */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.content-wrapper {
+  flex: 1; /* Ocupa o restante do espaço */
+  overflow-y: auto; /* Habilita rolagem, se necessário */
+  padding: 20px; /* Espaçamento interno */
+  background-color: #f9f9f9; /* Fundo claro */
+}

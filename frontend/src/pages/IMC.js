@@ -3,8 +3,8 @@ import api from '../services/api';
 import '../styles/IMC.css'; // Importação do estilo externo
 
 const IMC = () => {
-  const [peso, setPeso] = useState(0);
-  const [altura, setAltura] = useState(0);
+  const [peso, setPeso] = useState();
+  const [altura, setAltura] = useState();
   const [imc, setImc] = useState(null);
   const [usuario, setUsuario] = useState('');  // Campo para o nome do usuário
   const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico de IMC
@@ -23,7 +23,13 @@ const IMC = () => {
           altura: parseFloat(altura),
           peso: parseFloat(peso),
           usuario,
-        });
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
+          }
+        }
+      );
         alert('IMC calculado e salvo com sucesso!');
       } catch (error) {
         alert('Erro ao salvar o IMC. Tente novamente.');

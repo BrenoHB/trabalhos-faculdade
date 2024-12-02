@@ -8,23 +8,31 @@ import IMC from './pages/IMC';
 import AtFisica from './pages/AtFisica';
 import Alimentacao from './pages/Alimentacao';
 import PrivateRoute from './components/PrivateRoute';
+import MainLayout from './layouts/MainLayout'; // Certifique-se do caminho correto
 
 const App = () => {
   return (
     <Router>
       <AuthProvider>
         <Routes>
-          {/* Rotas públicas (sem autenticação) */}
+          {/* Rotas públicas */}
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
+          <Route element={<MainLayout />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/imc" element={<IMC />} />
+              <Route path="/atfisica" element={<AtFisica />} />
+              <Route path="/alimentacao" element={<Alimentacao />} />
+            </Route>
 
-
-          {/* Rotas protegidas */}
+          {/* Rotas protegidas com layout principal */}
           <Route element={<PrivateRoute />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/imc" element={<IMC />} />
-            <Route path="/atfisica" element={<AtFisica />} />
-            <Route path="/alimentacao" element={<Alimentacao />} />
+            <Route element={<MainLayout />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/imc" element={<IMC />} />
+              <Route path="/atfisica" element={<AtFisica />} />
+              <Route path="/alimentacao" element={<Alimentacao />} />
+            </Route>
           </Route>
 
           {/* Rota padrão */}

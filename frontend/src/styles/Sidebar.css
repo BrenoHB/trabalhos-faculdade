@@ -1,23 +1,55 @@
-.sidebar-container {
-    width: 250px;
-    background-color: #002b5c;
-    color: #ffffff;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-  }
-  
-  .nav-item {
-    text-decoration: none;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    margin: 10px 0;
-    font-size: 18px;
-  }
-  
-  .nav-item:hover {
-    text-decoration: underline;
-  }
-  
+/* Estilos gerais da Sidebar */
+.sidebar {
+  background-color: #a3c9f1; /* Azul claro */
+  height: 100vh;
+  width: 250px; /* Largura fixa */
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  font-family: 'Poppins', sans-serif; /* Fonte usada em todo o sistema */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Remove os pontos de lista */
+.sidebar ul {
+  list-style-type: none; /* Remove os marcadores padrão */
+  padding: 0; /* Remove o padding da lista */
+  margin: 0; /* Remove a margem da lista */
+}
+
+/* Links dentro da Sidebar */
+.sidebar-link {
+  display: block;
+  padding: 15px 25px;
+  color: #002b5c; /* Cor do texto */
+  text-decoration: none;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+/* Efeito hover nos links */
+.sidebar-link:hover {
+  background-color: #5b8fd0;
+  color: white;
+}
+
+/* Estilo do botão Logout */
+.logout-btn {
+  background-color: #d32f2f; /* Cor de fundo vermelha */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: auto;
+  margin-left: 25px;
+  transition: background-color 0.3s;
+}
+
+/* Efeito hover no botão Logout */
+.logout-btn:hover {
+  background-color: #c62828;
+}
