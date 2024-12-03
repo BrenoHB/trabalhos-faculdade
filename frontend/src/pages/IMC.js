@@ -43,9 +43,15 @@ const IMC = () => {
   const handleHistorico = async () => {
     try {
       const response = await api.post('/getimc', {
-        params: { usuario },
+        "usuario": "string",
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
+        }
       });
-      setHistorico(response.data);  // Atualiza o estado com o histórico de IMC
+      setHistorico(response.data);
+      console.log(response.data)  // Atualiza o estado com o histórico de IMC
     } catch (error) {
       alert('Erro ao carregar o histórico de IMC. Tente novamente.');
     }

@@ -3,7 +3,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #f4f6f8;
+  background-color: #eaf4e1; /* Fundo verde claro */
   color: #333;
 }
 
@@ -19,7 +19,7 @@ button {
   margin-top: 20px;
   padding: 10px;
   width: 300px;
-  background-color: #002b5c;
+  background-color: #66bb6a; /* Verde médio */
   color: white;
   border: none;
   border-radius: 5px;
@@ -27,5 +27,5 @@ button {
 }
 
 button:hover {
-  background-color: #004080;
+  background-color: #388e3c; /* Verde mais escuro */
 }

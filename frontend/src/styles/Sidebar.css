@@ -1,27 +1,42 @@
 /* Estilos gerais da Sidebar */
 .sidebar {
-  background-color: #a3c9f1; /* Azul claro */
+  background-color: #b5e7a0; /* Verde claro */
   height: 100vh;
-  width: 250px; /* Largura fixa */
+  width: 250px;
   display: flex;
   flex-direction: column;
   padding: 20px 0;
-  font-family: 'Poppins', sans-serif; /* Fonte usada em todo o sistema */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Espaço para a logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* Altura do espaço da logo */
+  margin-bottom: 20px; /* Espaço entre a logo e os links */
+}
+
+.logo {
+  max-height: 100%;
+  max-width: 80%;
+  object-fit: contain; /* Ajusta a logo ao espaço */
 }
 
 /* Remove os pontos de lista */
 .sidebar ul {
-  list-style-type: none; /* Remove os marcadores padrão */
-  padding: 0; /* Remove o padding da lista */
-  margin: 0; /* Remove a margem da lista */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Links dentro da Sidebar */
 .sidebar-link {
   display: block;
   padding: 15px 25px;
-  color: #002b5c; /* Cor do texto */
+  color: #004d1a; /* Cor do texto */
   text-decoration: none;
   font-size: 18px;
   margin-bottom: 10px;
@@ -31,13 +46,13 @@
 
 /* Efeito hover nos links */
 .sidebar-link:hover {
-  background-color: #5b8fd0;
+  background-color: #66bb6a;
   color: white;
 }
 
 /* Estilo do botão Logout */
 .logout-btn {
-  background-color: #d32f2f; /* Cor de fundo vermelha */
+  background-color: #d32f2f;
   color: white;
   padding: 12px 20px;
   border: none;

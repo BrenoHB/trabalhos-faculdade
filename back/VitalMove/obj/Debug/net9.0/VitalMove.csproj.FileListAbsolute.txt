@@ -365,3 +365,4 @@ C:\Users\Emerson\Documents\GitHub\trabalhos-faculdade\back\VitalMove\obj\Debug\n
 C:\Users\Emerson\Documents\GitHub\trabalhos-faculdade\back\VitalMove\obj\Debug\net9.0\VitalMove.pdb
 C:\Users\Emerson\Documents\GitHub\trabalhos-faculdade\back\VitalMove\obj\Debug\net9.0\VitalMove.genruntimeconfig.cache
 C:\Users\Emerson\Documents\GitHub\trabalhos-faculdade\back\VitalMove\obj\Debug\net9.0\ref\VitalMove.dll
+C:\Users\Emerson\Documents\GitHub\trabalhos-faculdade\back\VitalMove\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

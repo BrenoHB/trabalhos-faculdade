@@ -1,12 +1,11 @@
-/* Cadastro.css */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #f0f4f8; /* Cor de fundo azul claro */
-  height: 100vh; /* Garante que o body ocupe toda a altura da janela */
-  display: flex; /* Centraliza o container */
-  justify-content: center; /* Alinha horizontalmente ao centro */
-  align-items: center; /* Alinha verticalmente ao centro */
+  background-color: #eaf4e1; /* Fundo verde claro */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cadastro-container {
@@ -24,7 +23,7 @@ body {
 }
 
 .cadastro-container h1 {
-  color: #002b5c;
+  color: #004d1a; /* Verde escuro */
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: 600;
@@ -40,7 +39,7 @@ body {
 }
 
 .cadastro-container input:focus {
-  border-color: #002b5c;
+  border-color: #66bb6a; /* Verde médio */
   outline: none;
 }
 
@@ -48,7 +47,7 @@ body {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
-  background-color: #002b5c;
+  background-color: #66bb6a; /* Verde médio */
   color: white;
   font-size: 16px;
   border: none;
@@ -57,59 +56,10 @@ body {
 }
 
 .cadastro-container button:hover {
-  background-color: #004080;
+  background-color: #388e3c; /* Verde mais escuro */
 }
 
 .cadastro-container button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
-}
-
-/* Estilos para os campos de entrada */
-.input {
-  padding: 10px;
-  margin: 10px 0;
-  width: 250px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.input-error {
-  border-color: red; /* Cor de erro */
-}
-
-/* Estilo para os textos de erro */
-.error-text {
-  color: red;
-  font-size: 12px;
-  margin: 5px 0;
-}
-
-/* Estilos do botão (botão de cadastrar) */
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  margin: 5px;
-}
-
-button[type='submit'] {
-  background-color: #002b5c; /* Cor do botão Cadastrar */
-  color: white;
-}
-
-button[type='button'] {
-  background-color: red; /* Cor do botão Cancelar */
-  color: white;
-}
-
-/* Container que agrupa os botões */
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Espaçamento entre os botões */
-  margin-top: 20px;
 }
