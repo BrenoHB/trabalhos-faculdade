@@ -16,13 +16,17 @@ namespace API.Controllers
         [HttpPost("login")]
         public IActionResult Log(UserLoginDTO credentials)
         {
-            bool isValid = Login.Authenticate(credentials);
-            if (isValid)
+            try{
+            string usuario = Login.Authenticate(credentials);
+            if (usuario !=null)
             {
-                var loginResponse = new LoginResponseDTO { Token = Authenticate.GenerateToken(credentials.CPF) };
+                var loginResponse = new LoginResponseDTO { Token = Authenticate.GenerateToken(credentials.CPF), Usuario = usuario };
                 return Ok(loginResponse);
             }
             return BadRequest("Invalid username or password");
+        }catch{
+            return BadRequest("Invalid username or password");
+        }
         }
 
         [HttpPost("register")]
