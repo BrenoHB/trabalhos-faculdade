@@ -43,7 +43,7 @@ const IMC = () => {
   const handleHistorico = async () => {
     try {
       const response = await api.post('/getimc', {
-        "usuario": "string",
+         usuario,
       },
       {
         headers: {
@@ -51,7 +51,8 @@ const IMC = () => {
         }
       });
       setHistorico(response.data);
-      console.log(response.data)  // Atualiza o estado com o histórico de IMC
+
+  // Atualiza o estado com o histórico de IMC
     } catch (error) {
       alert('Erro ao carregar o histórico de IMC. Tente novamente.');
     }

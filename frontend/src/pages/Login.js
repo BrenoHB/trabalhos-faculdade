@@ -22,6 +22,7 @@ const Login = () => {
 
       if (response.data.token) {
         localStorage.setItem('token', response.data.token); // Salva o token no localStorage
+        localStorage.setItem('usuario', response.data.usuario); 
         login(); // Atualiza o contexto de autenticação
         navigate('/home'); // Redireciona para a página inicial
       }

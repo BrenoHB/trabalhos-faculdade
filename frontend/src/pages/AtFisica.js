@@ -21,6 +21,11 @@ const AtFisica = () => {
         kcal,
         tempoD,
         usuario,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
+        }
       });
       alert('Registro de atividade física salvo com sucesso!');
       setModalidade('');
@@ -39,6 +44,11 @@ const AtFisica = () => {
     try {
       const response = await api.post('/GetAtFisica', {
         usuario,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
+        }
       });
       setHistorico(response.data);  // Atualiza o estado com os dados do histórico
     } catch (error) {

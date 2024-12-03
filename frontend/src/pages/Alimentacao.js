@@ -6,7 +6,7 @@ const Alimentacao = () => {
   const [horario, setHorario] = useState('');
   const [alimentos, setAlimentos] = useState('');
   const [kcal, setKcal] = useState();
-  const [comentarios, setComentarios] = useState('');
+  const [Comentario, setComentario] = useState('');
   const [usuario, setUsuario] = useState('');  // Campo para o nome do usuário
   const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico de alimentação
 
@@ -18,14 +18,19 @@ const Alimentacao = () => {
         horario,
         alimentos,
         kcal: parseInt(kcal),
-        comentarios,
+        Comentario,
         usuario,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
+        }
       });
       alert('Registro de alimentação salvo com sucesso!');
       setHorario('');
       setAlimentos('');
       setKcal(0);
-      setComentarios('');
+      setComentario('');
     } catch (error) {
       alert('Erro ao salvar o registro de alimentação. Tente novamente.');
     }
@@ -37,6 +42,11 @@ const Alimentacao = () => {
       // Envia o usuário no corpo da requisição
       const response = await api.post('/GetAlimentacao', {
         usuario,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
+        }
       });
       setHistorico(response.data);  // Atualiza o estado com o histórico de alimentação
     } catch (error) {
@@ -76,8 +86,8 @@ const Alimentacao = () => {
       />
       <textarea
         placeholder="Comentários"
-        value={comentarios}
-        onChange={(e) => setComentarios(e.target.value)}
+        value={Comentario}
+        onChange={(e) => setComentario(e.target.value)}
         rows="4"
       />
       <button onClick={handleSubmit}>Salvar</button>
@@ -95,7 +105,7 @@ const Alimentacao = () => {
                 <p><strong>Horário:</strong> {registro.horario}</p>
                 <p><strong>Alimentos:</strong> {registro.alimentos}</p>
                 <p><strong>Calorias:</strong> {registro.kcal} kcal</p>
-                <p><strong>Comentários:</strong> {registro.comentarios}</p>
+                <p><strong>Comentários:</strong> {registro.comentario}</p>
                 <p><strong>Data de Registro:</strong> {new Date(registro.createdAt).toLocaleString()}</p>
               </li>
             ))}
