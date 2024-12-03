@@ -12,7 +12,7 @@ namespace Services.IMC
         {
             string conn = DbString.Context();
             string insertQuery = "INSERT INTO IMC (IMC, altura, peso, usuario) VALUES (@IMC, @Altura, @Peso, @usuario)";
-            IMCResponseDTO.IMC = IMCResponseDTO.Peso / (IMCResponseDTO.Altura * IMCResponseDTO.Altura);
+            IMCResponseDTO.IMC = IMCResponseDTO.Peso / (IMCResponseDTO.Altura/100 * IMCResponseDTO.Altura/100);
             try
             {
                 using (var connection = new MySqlConnection(conn))
