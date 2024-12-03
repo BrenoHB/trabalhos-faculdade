@@ -4,55 +4,62 @@ import '../styles/AtFisica.css'; // Importação do estilo externo
 
 const AtFisica = () => {
   const [modalidade, setModalidade] = useState('');
-  const [tempo, setTempo] = useState();
-  const [distancia, setDistancia] = useState();
-  const [kcal, setKcal] = useState();
-  const [tempoD, setTempoD] = useState();
-  const [usuario, setUsuario] = useState('');  // Campo para o nome do usuário
+  const [tempo, setTempo] = useState('');
+  const [distancia, setDistancia] = useState('');
+  const [kcal, setKcal] = useState('');
+  const [tempoD, setTempoD] = useState('');
+  const [usuario, setUsuario] = useState(localStorage.getItem('usuario') || ''); // Carrega o usuário do localStorage
   const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico de atividades
 
   // Função para registrar a atividade física
   const handleSubmit = async () => {
-    try {
-      await api.post('/PostAtFisica', {
-        modalidade,
-        tempo,
-        distancia,
-        kcal,
-        tempoD,
-        usuario,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
-        }
-      });
-      alert('Registro de atividade física salvo com sucesso!');
-      setModalidade('');
-      setTempo(0);
-      setDistancia(0);
-      setKcal(0);
-      setTempoD(0);
-      setUsuario('');
-    } catch (error) {
-      alert('Erro ao salvar o registro de atividade física. Tente novamente.');
+    if (modalidade && tempo && kcal && tempoD && usuario) {
+      try {
+        await api.post('/PostAtFisica', {
+          modalidade,
+          tempo,
+          distancia,
+          kcal,
+          tempoD,
+          usuario,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
+          }
+        });
+        alert('Registro de atividade física salvo com sucesso!');
+        setModalidade('');
+        setTempo('');
+        setDistancia('');
+        setKcal('');
+        setTempoD('');
+      } catch (error) {
+        alert('Erro ao salvar o registro de atividade física. Tente novamente.');
+      }
+    } else {
+      alert('Por favor, preencha todos os campos.');
     }
   };
 
   // Função para exibir o histórico de atividades físicas
   const handleHistorico = async () => {
-    try {
-      const response = await api.post('/GetAtFisica', {
-        usuario,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
-        }
-      });
-      setHistorico(response.data);  // Atualiza o estado com os dados do histórico
-    } catch (error) {
-      alert('Erro ao carregar o histórico. Tente novamente.');
+    if (usuario) {
+      try {
+        const response = await api.post('/GetAtFisica', {
+          usuario,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
+          }
+        });
+        setHistorico(response.data);  // Atualiza o estado com os dados do histórico
+      } catch (error) {
+        alert('Erro ao carregar o histórico. Tente novamente.');
+      }
+    } else {
+      alert('Usuário não encontrado. Por favor, faça login.');
     }
   };
 
@@ -72,35 +79,28 @@ const AtFisica = () => {
         type="number"
         placeholder="Tempo (minutos)"
         value={tempo}
-        onChange={(e) => setTempo(parseInt(e.target.value))}
+        onChange={(e) => setTempo(e.target.value)}
       />
       <input
         className="atfisica-input"
         type="number"
         placeholder="Distância (metros)"
         value={distancia}
-        onChange={(e) => setDistancia(parseInt(e.target.value))}
+        onChange={(e) => setDistancia(e.target.value)}
       />
       <input
         className="atfisica-input"
         type="number"
         placeholder="Calorias Queimadas (Kcal)"
         value={kcal}
-        onChange={(e) => setKcal(parseInt(e.target.value))}
+        onChange={(e) => setKcal(e.target.value)}
       />
       <input
         className="atfisica-input"
         type="number"
         placeholder="Tempo de Descanso (minutos)"
         value={tempoD}
-        onChange={(e) => setTempoD(parseInt(e.target.value))}
-      />
-      <input
-        className="atfisica-input"
-        type="text"
-        placeholder="Usuário"
-        value={usuario}
-        onChange={(e) => setUsuario(e.target.value)}
+        onChange={(e) => setTempoD(e.target.value)}
       />
       <button className="atfisica-button" onClick={handleSubmit}>Salvar</button>
 

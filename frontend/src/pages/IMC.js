@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import '../styles/IMC.css'; // Importação do estilo externo
 
 const IMC = () => {
-  const [peso, setPeso] = useState();
-  const [altura, setAltura] = useState();
+  const [peso, setPeso] = useState('');
+  const [altura, setAltura] = useState('');
   const [imc, setImc] = useState(null);
-  const [usuario, setUsuario] = useState('');  // Campo para o nome do usuário
+  const [usuario, setUsuario] = useState(localStorage.getItem('usuario') || ''); // Carrega o usuário do localStorage
   const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico de IMC
 
   // Função para calcular o IMC
   const calcularIMC = async () => {
-    if (peso && altura) {
+    if (peso && altura && usuario) {
       const alturaMetros = parseFloat(altura) / 100;
       const imcCalculado = (parseFloat(peso) / (alturaMetros ** 2)).toFixed(2);
       setImc(imcCalculado);
@@ -22,14 +22,13 @@ const IMC = () => {
           imc: parseFloat(imcCalculado),
           altura: parseFloat(altura),
           peso: parseFloat(peso),
-          usuario,
+          usuario: usuario, // Enviar o usuário
         },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`, // Adiciona o token Bearer aqui
           }
-        }
-      );
+        });
         alert('IMC calculado e salvo com sucesso!');
       } catch (error) {
         alert('Erro ao salvar o IMC. Tente novamente.');
@@ -43,7 +42,7 @@ const IMC = () => {
   const handleHistorico = async () => {
     try {
       const response = await api.post('/getimc', {
-         "usuario": localStorage.getItem('usuario')
+         usuario: usuario, // Enviar o usuário
       },
       {
         headers: {
@@ -52,7 +51,6 @@ const IMC = () => {
       });
       setHistorico(response.data);
 
-  // Atualiza o estado com o histórico de IMC
     } catch (error) {
       alert('Erro ao carregar o histórico de IMC. Tente novamente.');
     }
@@ -76,13 +74,7 @@ const IMC = () => {
         value={altura}
         onChange={(e) => setAltura(e.target.value)}
       />
-      <input
-        className="imc-input"
-        type="text"
-        placeholder="Usuário"
-        value={usuario}
-        onChange={(e) => setUsuario(e.target.value)}
-      />
+     
       <button className="imc-button" onClick={calcularIMC}>
         Calcular IMC
       </button>
@@ -95,7 +87,13 @@ const IMC = () => {
       </button>
 
       {/* Exibindo o histórico de IMC */}
-      {historico.length > 0 && (<div className="historico-container"><h2>Histórico de IMC</h2><ul>{historico.map((registro, index) => (<li key={index}><p><strong>IMC:</strong> {registro.imc}</p>
+      {historico.length > 0 && (
+        <div className="historico-container">
+          <h2>Histórico de IMC</h2>
+          <ul>
+            {historico.map((registro, index) => (
+              <li key={index}>
+                <p><strong>IMC:</strong> {registro.imc}</p>
                 <p><strong>Peso:</strong> {registro.peso} kg</p>
                 <p><strong>Altura:</strong> {registro.altura} cm</p>
                 <p><strong>Data de Cálculo:</strong> {new Date(registro.createdAt).toLocaleString()}</p>
