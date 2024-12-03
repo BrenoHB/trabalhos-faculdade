@@ -7,5 +7,6 @@ namespace VitalMoveDTO
     {
 
         public string? Token { get; set; }
+        public string? Usuario { get; set; }
     }
 }
