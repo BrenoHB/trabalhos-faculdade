@@ -20,3 +20,30 @@ textarea {
   border-radius: 5px;
   resize: none;
 }
+
+.alimentacao-button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  background-color: #4caf50; /* Verde */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.alimentacao-button:hover {
+  background-color: #45a049; /* Verde mais escuro */
+}
+
+.limpar-historico-button {
+  background-color: #f44336; /* Vermelho */
+}
+
+.limpar-historico-button:hover {
+  background-color: #e53935; /* Vermelho mais escuro */
+}
+
+.historico-container {
+  margin-top: 20px; /* Espaço extra acima do histórico */
+  width: 100%; /* Largura total */
+}

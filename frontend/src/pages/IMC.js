@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import api from '../services/api';
 import '../styles/IMC.css'; // Importação do estilo externo
 
@@ -6,7 +6,7 @@ const IMC = () => {
   const [peso, setPeso] = useState('');
   const [altura, setAltura] = useState('');
   const [imc, setImc] = useState(null);
-  const [usuario, setUsuario] = useState(localStorage.getItem('usuario') || ''); // Carrega o usuário do localStorage
+  const [usuario] = useState(localStorage.getItem('usuario') || ''); // Carrega o usuário do localStorage
   const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico de IMC
 
   // Função para calcular o IMC
@@ -56,6 +56,11 @@ const IMC = () => {
     }
   };
 
+  // Função para limpar o histórico de IMC
+  const limparHistorico = () => {
+    setHistorico([]);
+  };
+
   return (
     <div className="imc-container">
       <h1 className="imc-title">Calcular IMC</h1>
@@ -86,7 +91,7 @@ const IMC = () => {
         Exibir Histórico de IMC
       </button>
 
-      {/* Exibindo o histórico de IMC */}
+      {/* Exibindo o histórico de IMC e o botão para limpar o histórico */}
       {historico.length > 0 && (
         <div className="historico-container">
           <h2>Histórico de IMC</h2>
@@ -100,6 +105,8 @@ const IMC = () => {
               </li>
             ))}
           </ul>
+          {/* Botão para limpar o histórico de IMC */}
+          <button className="imc-button limpar-historico-button" onClick={limparHistorico}>Ocultar Histórico</button>
         </div>
       )}
     </div>

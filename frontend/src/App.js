@@ -18,12 +18,6 @@ const App = () => {
           {/* Rotas públicas */}
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route element={<MainLayout />}>
-              <Route path="/home" element={<Home />} />
-              <Route path="/imc" element={<IMC />} />
-              <Route path="/atfisica" element={<AtFisica />} />
-              <Route path="/alimentacao" element={<Alimentacao />} />
-            </Route>
 
           {/* Rotas protegidas com layout principal */}
           <Route element={<PrivateRoute />}>

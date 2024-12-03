@@ -8,7 +8,7 @@ const AtFisica = () => {
   const [distancia, setDistancia] = useState('');
   const [kcal, setKcal] = useState('');
   const [tempoD, setTempoD] = useState('');
-  const [usuario, setUsuario] = useState(localStorage.getItem('usuario') || ''); // Carrega o usuário do localStorage
+  const [usuario] = useState(localStorage.getItem('usuario') || ''); // Carrega o usuário do localStorage
   const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico de atividades
 
   // Função para registrar a atividade física
@@ -63,6 +63,11 @@ const AtFisica = () => {
     }
   };
 
+  // Função para limpar o histórico de atividades físicas
+  const limparHistorico = () => {
+    setHistorico([]);
+  };
+
   return (
     <div className="atfisica-container">
       <h1 className="atfisica-title">Registro de Atividade Física</h1>
@@ -107,7 +112,7 @@ const AtFisica = () => {
       {/* Botão para exibir o histórico */}
       <button className="atfisica-button" onClick={handleHistorico}>Exibir Histórico</button>
 
-      {/* Exibindo o histórico de atividades */}
+      {/* Exibindo o histórico de atividades e o botão para limpar o histórico */}
       {historico.length > 0 && (
         <div className="historico-container">
           <h2>Histórico de Atividades</h2>
@@ -122,6 +127,8 @@ const AtFisica = () => {
               </li>
             ))}
           </ul>
+          {/* Botão para limpar o histórico de atividades */}
+          <button className="atfisica-button limpar-historico-button" onClick={limparHistorico}>Ocultar Histórico</button>
         </div>
       )}
     </div>

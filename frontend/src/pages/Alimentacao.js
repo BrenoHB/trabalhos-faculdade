@@ -7,7 +7,7 @@ const Alimentacao = () => {
   const [alimentos, setAlimentos] = useState('');
   const [kcal, setKcal] = useState('');
   const [comentario, setComentario] = useState('');
-  const [usuario, setUsuario] = useState(localStorage.getItem('usuario') || ''); // Carrega o usuário do localStorage
+  const [usuario] = useState(localStorage.getItem('usuario') || ''); // Carrega o usuário do localStorage
   const [historico, setHistorico] = useState([]);  // Estado para armazenar o histórico de alimentação
 
   // Função para salvar o registro de alimentação
@@ -62,6 +62,11 @@ const Alimentacao = () => {
     }
   };
 
+  // Função para limpar o histórico de alimentação
+  const limparHistorico = () => {
+    setHistorico([]);
+  };
+
   return (
     <div className="alimentacao-container">
       <h1 className="alimentacao-title">Registro de Alimentação</h1>
@@ -99,7 +104,7 @@ const Alimentacao = () => {
       {/* Botão para exibir o histórico de alimentação */}
       <button className="alimentacao-button" onClick={handleHistorico}>Exibir Histórico de Alimentação</button>
 
-      {/* Exibindo o histórico de alimentação */}
+      {/* Exibindo o histórico de alimentação e o botão para limpar o histórico */}
       {historico.length > 0 && (
         <div className="historico-container">
           <h2>Histórico de Alimentação</h2>
@@ -114,6 +119,8 @@ const Alimentacao = () => {
               </li>
             ))}
           </ul>
+          {/* Botão para limpar o histórico de alimentação */}
+          <button className="alimentacao-button limpar-historico-button" onClick={limparHistorico}>Ocultar Histórico</button>
         </div>
       )}
     </div>

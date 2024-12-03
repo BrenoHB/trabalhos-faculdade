@@ -44,3 +44,16 @@
   font-weight: bold;
   color: #004d1a; /* Verde escuro */
 }
+
+.limpar-historico-button {
+  background-color: #f44336; /* Vermelho */
+}
+
+.limpar-historico-button:hover {
+  background-color: #e53935; /* Vermelho mais escuro */
+}
+
+.historico-container {
+  margin-top: 20px; /* Espaço extra acima do histórico */
+  width: 100%; /* Largura total */
+}
