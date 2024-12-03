@@ -7,10 +7,10 @@ namespace Util.Login
 {
     public class Login
     {
-        public static string Authenticate(UserLoginDTO credential)
+        public static bool Authenticate(UserLoginDTO credential)
         {
             string conn = DbString.Context();
-            string query = "SELECT usuario, CPF, senha FROM usuarios WHERE CPF = @CPF AND senha = @password";
+            string query = "SELECT CPF, senha FROM usuarios WHERE CPF = @CPF AND senha = @password";
 
             using (var connection = new MySqlConnection(conn))
             {
@@ -27,13 +27,11 @@ namespace Util.Login
 
                         if (reader.Read())
                         {
-                            string usuario = reader.GetString("usuario");
-                            return usuario;
+                            return true;
                         }
                         else
                         {
-                           
-                            throw new Exception("não encontrado");
+                            return false;
                         }
                     }
                 }

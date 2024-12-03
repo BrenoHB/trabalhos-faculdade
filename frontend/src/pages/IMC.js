@@ -43,7 +43,7 @@ const IMC = () => {
   const handleHistorico = async () => {
     try {
       const response = await api.post('/getimc', {
-         usuario,
+         "usuario": localStorage.getItem('usuario')
       },
       {
         headers: {
